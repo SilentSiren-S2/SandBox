@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="SandBox.View.UCStudent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SandBox.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="400" FontFamily="Times New Roman">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+        </Style>
+
+        <Style TargetType="ProgressBar">
+            <Setter Property="Height" Value="15"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="#2C2C2C"/>
+            <!-- Темний сірий колір для фону -->
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="DarkGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <!-- Обгортка Border -->
+    <Border BorderBrush="White" BorderThickness="1" Background="Black">
+        <DockPanel Background="Black">
+            <Label x:Name="lName" DockPanel.Dock="Top" MouseRightButtonDown="lName_MouseRightButtonDown">StudentName</Label>
+
+            <!-- Лічильники -->
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <TextBlock Text="Exp:"/>
+                <Label x:Name="lExp" Content="0"/>
+                <TextBlock Text="Points:"/>
+                <Label x:Name="lPoints" Content="0"/>
+            </StackPanel>
+
+            <!-- ProgressBar для energy -->
+            <ProgressBar x:Name="pbEnergy" DockPanel.Dock="Top" Value="0" Maximum="100" Height="20">
+        
+            </ProgressBar>
+
+            <!-- Кнопки -->
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                <Button Content="Вчитися" Click="StudyButton_Click"/>
+                <Button Content="Працювати" Click="WorkButton_Click"/>
+                <Button Content="Відпочивати" Click="RestButton_Click"/>
+            </StackPanel>
+            <Popup x:Name="myPopup" IsOpen="False" Placement="Center" StaysOpen="False">
+                <Grid>
+                    <StackPanel>
+                        <TextBlock Text="Actions"/>
+                        <Button Content="Kick" Click="Kick_Click"/>
+                        <Button Content="Scholarship" Click="Scholarship_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Popup>
+        </DockPanel>
+        
+    </Border>
+    
+</UserControl>
