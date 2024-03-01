@@ -1,4 +1,5 @@
-﻿using SandBox.View;
+﻿using SandBox.Engine.VEngine;
+using SandBox.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,12 @@ namespace SandBox
             univ.ShowDialog();
 
             (Application.Current as App).CreateUnivWindows.Add(univ);
+        }
+
+        private void EngineButton_Click(object sender, RoutedEventArgs e)
+        {
+            FightZone fightZone = new FightZone();
+            fightZone.ShowDialog();
         }
     }
 }

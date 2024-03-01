@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:SandBox"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel>
         <Button x:Name="createButton" Content="SandBox" Click="createButton_Click" Background="LimeGreen" Padding="10" Margin="10" FontFamily="Times New Roman" FontSize="20"/>
-    </Grid>
+        <Button x:Name="EngineButton" Content="Engine" Click="EngineButton_Click" Background="LimeGreen" Padding="10" Margin="10" FontFamily="Times New Roman" FontSize="20"/>
+
+    </StackPanel>
 </Window>
