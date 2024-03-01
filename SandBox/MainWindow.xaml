@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:SandBox"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="createButton" Content="SandBox" Click="createButton_Click" Background="LimeGreen" Padding="10" Margin="10" FontFamily="Times New Roman" FontSize="20"/>
-    </Grid>
+    <Window.Background>
+        <ImageBrush ImageSource="/461021.jpg"/>
+    </Window.Background>
+    <StackPanel>
+        <Button x:Name="btnSampleUniv" Content="Univ Sample" Click="createButton_Click" Background="LimeGreen" Padding="50" Margin="10" FontFamily="Times New Roman" FontSize="20"/>
+        <Button x:Name="btnSample2" Content="Sample 2" Click="btnSample2_Click" Padding="50" Margin="10" FontFamily="Times New Roman" FontSize="20">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+    </StackPanel>
 </Window>

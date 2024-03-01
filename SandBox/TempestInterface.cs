@@ -20,6 +20,16 @@ namespace SandBox
         IStudent CreateStudent();
     }
 
+    public interface IStuffFactory
+    {
+        IStuff CreateStuff();
+    }
+
+    public interface IStuff
+    {
+
+    }
+
     public interface IProduct
     {
         void Operation();

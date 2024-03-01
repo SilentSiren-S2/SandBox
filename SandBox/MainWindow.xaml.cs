@@ -34,5 +34,10 @@ namespace SandBox
 
             (Application.Current as App).CreateUnivWindows.Add(univ);
         }
+
+        private void btnSample2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -63,12 +63,16 @@ namespace SandBox.Model
                 Energy++;
         }
 
-        public void Study()
+        public virtual void Study()
         {
-            if(Energy < 20) 
+            if(Energy < 20)
+            {
                 exp++;
-            else 
-                exp+=5;
+            }
+            else
+            {
+                exp += 5;
+            }
             Energy--;
         }
 
@@ -80,17 +84,26 @@ namespace SandBox.Model
                 points += 2 * exp / 100; 
             }
             else
-                points += 1 * exp / 100;
+                points += exp / 100;
             Energy--;
         }
 
-        public override string ToString() { return name; }
+        public override string ToString() 
+        {
+            return name; 
+        }
     }
 
     internal class Mathematician : Student
     {
         public Mathematician(string name) : base(name)
         {
+        }
+
+        public override void Study()
+        {
+            Exp += 10;
+            Energy--;
         }
     }
 
