@@ -8,7 +8,7 @@ namespace SandBox.Model
 {
     internal class University : IFactory
     {
-        private List<string>  studentNames = new List<string>
+        private List<string> studentNames = new List<string>
         {
             "John Smith", "Emma Johnson", "Christopher Davis", "Sophia Williams",
             "Daniel Brown", "Ava Miller", "Matthew Jones", "Olivia Garcia",
