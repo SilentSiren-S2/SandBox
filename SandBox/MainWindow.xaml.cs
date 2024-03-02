@@ -25,6 +25,8 @@ namespace SandBox
         public MainWindow()
         {
             InitializeComponent();
+            TempestSound tempestSound = new TempestSound();
+            tempestSound.Play("Sound1.mp3");
         }
 
         private void createButton_Click(object sender, RoutedEventArgs e)
