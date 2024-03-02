@@ -41,5 +41,11 @@ namespace SandBox
             FightZone fightZone = new FightZone();
             fightZone.ShowDialog();
         }
+
+        private void DeadInside_Click(object sender, RoutedEventArgs e)
+        {
+            DeadInside4.MainWindow mainWindow = new DeadInside4.MainWindow();
+            mainWindow.Show();
+        }
     }
 }

@@ -5,7 +5,11 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandBox", "SandBox\SandBox.csproj", "{BBC689E7-0BBD-462B-B758-AF86D2A26BDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempestEngine", "TempestEngine\TempestEngine.csproj", "{5BF7BF3A-C7BE-47BC-BC88-A577BBF42C91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempestEngine", "TempestEngine\TempestEngine.csproj", "{5BF7BF3A-C7BE-47BC-BC88-A577BBF42C91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sounder", "Sounder\Sounder.csproj", "{17EE1A1C-4D21-44F1-BEE5-A2D7BCAD424B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeadInside4", "DeadInside4\DeadInside4.csproj", "{8755CB41-B1FA-421E-832F-6743FA4C3F36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{5BF7BF3A-C7BE-47BC-BC88-A577BBF42C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BF7BF3A-C7BE-47BC-BC88-A577BBF42C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BF7BF3A-C7BE-47BC-BC88-A577BBF42C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17EE1A1C-4D21-44F1-BEE5-A2D7BCAD424B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EE1A1C-4D21-44F1-BEE5-A2D7BCAD424B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EE1A1C-4D21-44F1-BEE5-A2D7BCAD424B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EE1A1C-4D21-44F1-BEE5-A2D7BCAD424B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8755CB41-B1FA-421E-832F-6743FA4C3F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8755CB41-B1FA-421E-832F-6743FA4C3F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8755CB41-B1FA-421E-832F-6743FA4C3F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8755CB41-B1FA-421E-832F-6743FA4C3F36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

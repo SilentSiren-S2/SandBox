@@ -9,6 +9,7 @@
     <StackPanel>
         <Button x:Name="createButton" Content="SandBox" Click="createButton_Click" Background="LimeGreen" Padding="10" Margin="10" FontFamily="Times New Roman" FontSize="20"/>
         <Button x:Name="EngineButton" Content="Engine" Click="EngineButton_Click" Background="LimeGreen" Padding="10" Margin="10" FontFamily="Times New Roman" FontSize="20"/>
+        <Button x:Name="DeadInsideButton" Content="DeadInside_Click" Background="LimeGreen" Padding="10" Margin="10" FontFamily="Times New Roman" FontSize="20" Click="DeadInside_Click"/>
 
     </StackPanel>
 </Window>

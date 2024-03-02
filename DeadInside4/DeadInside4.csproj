@@ -4,13 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\DeadInside4\DeadInside4.csproj" />
-    <ProjectReference Include="..\TempestEngine\TempestEngine.csproj" />
-  </ItemGroup>
-
 
 </Project>
