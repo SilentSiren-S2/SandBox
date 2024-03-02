@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Elements\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Sounder\Sounder.csproj" />
   </ItemGroup>
 

@@ -10,8 +10,18 @@ namespace TempestEngine
     {
     }
 
-    public interface IEntity { }
-    public interface IMovable { }
+    public interface IEntity 
+    {
+        int Width { get; set; }
+        int Height { get; set; }
+        int X { get; set; }
+        int Y { get; set; }
+        bool Collision(IEntity entity);
+    }
+    public interface IMovable 
+    {
+        void Move();
+    }
     public interface IKickable { }
     public interface ILevel { }
 }

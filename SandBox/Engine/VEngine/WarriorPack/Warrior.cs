@@ -5,18 +5,23 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using TempestEngine;
+using TempestEngine.Elements;
 
 namespace SandBox.Engine.VEngine.WarriorPack
 {
-    class Warrior
+    class Warrior : IEntity
     {
         private Canvas canvas;
         private Ellipse warriorEllipse;
         private Random random = new Random();
         private DispatcherTimer movementTimer;
         private List<Warrior> enemies;
-        private int health = 100; // Початкове здоров'я
-
+        private int health = 100; // Початкове здоров'я public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public Warrior(Canvas canvas, List<Warrior> enemies, Point position)
         {
             this.canvas = canvas;
@@ -109,6 +114,18 @@ namespace SandBox.Engine.VEngine.WarriorPack
                     }
                 }
             }
+        }
+
+        public bool Collision(IEntity entity)
+        {
+            // Перевірка на перетин прямокутників
+            bool collisionX = (X < entity.X + entity.Width) && (X + Width > entity.X);
+            bool collisionY = (Y < entity.Y + entity.Height) && (Y + Height > entity.Y);
+
+
+            //bool tempColl = (X + Width < entity.X) || (X > entity.X + entity.Width);
+            // Повертаємо результат колізії
+            return collisionX && collisionY;
         }
     }
 }
