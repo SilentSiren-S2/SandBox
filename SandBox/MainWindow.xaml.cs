@@ -47,5 +47,11 @@ namespace SandBox
             DeadInside4.MainWindow mainWindow = new DeadInside4.MainWindow();
             mainWindow.Show();
         }
+
+        private void EngineButton2_Click(object sender, RoutedEventArgs e)
+        {
+            FightZone2 fightZone = new FightZone2();
+            fightZone.ShowDialog();
+        }
     }
 }

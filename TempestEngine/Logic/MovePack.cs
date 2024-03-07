@@ -11,14 +11,19 @@ namespace TempestEngine.Logic
     {
     }
 
-    internal class PlayerMove
+    public class PlayerMove : IMovementStrategy
     {
+        public void Move(AlphaWarrior warrior)
+        {
+
+        }
     }
 
-    internal class HaterMove : IMovable
+    public class HaterMove :  IMovementStrategy
     {
-        public void Move()
+        public void Move(AlphaWarrior warrior)
         {
+
         }
     }
 }

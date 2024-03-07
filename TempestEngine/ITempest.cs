@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TempestEngine.Elements;
 
 namespace TempestEngine
 {
@@ -21,6 +22,10 @@ namespace TempestEngine
     public interface IMovable 
     {
         void Move();
+    }
+    public interface IMovementStrategy
+    {
+        void Move(AlphaWarrior warrior);
     }
     public interface IKickable { }
     public interface ILevel { }

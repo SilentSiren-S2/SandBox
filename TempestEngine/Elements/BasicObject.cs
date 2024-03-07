@@ -12,6 +12,15 @@ namespace TempestEngine.Elements
         public int Height { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+
+        public BasicObject() 
+        {
+            Width = 5;
+            Height = 10;
+            X = 2;
+            Y = 2;
+        }
+
         public BasicObject(int width, int height, int x, int y)
         {
             Width = width;
