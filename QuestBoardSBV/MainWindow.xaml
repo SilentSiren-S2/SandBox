@@ -1,0 +1,19 @@
+﻿<Window x:Class="QuestBoardSBV.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuestBoardSBV"
+        mc:Ignorable="d"
+        Title="Main Desk" Height="450" Width="800">
+    <DockPanel x:Name="pMain" LastChildFill="True">
+        <StackPanel x:Name="spTop" DockPanel.Dock="Top" Orientation="Horizontal" Height="30" Background="Black">
+            
+        </StackPanel>
+        <!--<Frame x:Name="fMain" Background="Black">-->
+        <Canvas x:Name="canvas" Background="#FF1A1A1A" MouseLeftButtonDown="canvas_MouseLeftButtonDown" MouseRightButtonDown="canvas_MouseRightButtonDown">
+            
+        </Canvas>
+        <!--</Frame>-->
+    </DockPanel>
+</Window>
