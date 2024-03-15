@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace QuestBoardSBV.QuestView
 {
@@ -22,8 +23,39 @@ namespace QuestBoardSBV.QuestView
     public partial class UCQuest : UserControl
     {
         public Canvas canvas;
-        private Point startPoint;
+        public Point startPoint;
         private BasicQuest _quest;
+        public BasicQuest Quest
+        {
+            get { return _quest; }
+            set
+            {
+                _quest = value;
+                QuestUpdatedInUCQuest?.Invoke(_quest);
+            }
+        }
+
+        public string Name 
+        {
+            get { return _quest.Name; }
+            set
+            {
+                _quest.Name = value;
+                QuestUpdatedInUCQuest?.Invoke(_quest);
+            }
+        }
+        public string Description 
+        {
+            get { return _quest.Description; }
+            set
+            {
+                _quest.Description = value;
+                QuestUpdatedInUCQuest?.Invoke(_quest);
+            }
+        }
+
+        public event Action<BasicQuest> QuestUpdatedInUCQuest;
+
         public UCQuest()
         {
             InitializeComponent();
@@ -32,9 +64,11 @@ namespace QuestBoardSBV.QuestView
             MouseLeftButtonUp += OnMouseLeftButtonUp;
         }
 
-        internal void SetQuest(ref BasicQuest quest)
+        internal void SetQuest(BasicQuest quest)
         {
             _quest = quest;
+            tbName.Text = quest.Name;
+            tbInfo.Text = quest.Description;
         }
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -64,12 +98,12 @@ namespace QuestBoardSBV.QuestView
 
         private void tbName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _quest.Name = tbName.Text;
+            Name = tbName.Text;
         }
 
         private void tbInfo_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _quest.Description = tbInfo.Text;
+            Description = tbInfo.Text;
         }
     }
 }

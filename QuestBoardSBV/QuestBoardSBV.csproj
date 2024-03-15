@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="TempesT.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="TempesT.bmp" />
+  </ItemGroup>
+
 </Project>

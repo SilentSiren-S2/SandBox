@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuestBoardSBV"
         mc:Ignorable="d"
-        Title="Main Desk" Height="450" Width="800">
+        Title="Main Desk" Height="450" Width="800" Closing="Window_Closing" Icon="/TempesT.bmp">
     <DockPanel x:Name="pMain" LastChildFill="True">
         <StackPanel x:Name="spTop" DockPanel.Dock="Top" Orientation="Horizontal" Height="30" Background="Black">
             

@@ -1,5 +1,6 @@
 ﻿using QuestBoardSBV.QuestLegacy;
 using QuestBoardSBV.QuestView;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace QuestBoardSBV
 {
@@ -22,7 +24,34 @@ namespace QuestBoardSBV
         public MainWindow()
         {
             InitializeComponent();
-            AddQuest();
+            quests = XmlTestUtils.LoadQuests();
+            OpenQuests();
+        }
+
+        private void OpenQuests()
+        {
+            int i = 0;
+            foreach (BasicQuest quest in quests)
+            {
+                UCQuest uCQuest = new UCQuest();
+                uCQuest.SetQuest(quest);
+                uCQuest.QuestUpdatedInUCQuest += UpdateQuestInMainWindow;
+                canvas.Children.Add(uCQuest);
+                Canvas.SetLeft(uCQuest, i);
+                Canvas.SetTop(uCQuest, 0);
+                uCQuest.startPoint = new Point(i, 0);
+                i += 60;
+            }
+        }
+
+        private void UpdateQuestInMainWindow(BasicQuest updatedQuest)
+        {
+            // Оновіть відповідний елемент у списку quests
+            int index = quests.FindIndex(q => q == updatedQuest);
+            if (index != -1)
+            {
+                quests[index] = updatedQuest;
+            }
         }
 
         private void AddQuest()
@@ -30,8 +59,8 @@ namespace QuestBoardSBV
             BasicQuest newQuest = new BasicQuest();
             quests.Add(newQuest);
             UCQuest uCQuest = new UCQuest();
-            uCQuest.SetQuest(ref newQuest);
-
+            uCQuest.SetQuest(newQuest);
+            uCQuest.QuestUpdatedInUCQuest += UpdateQuestInMainWindow;
 
             canvas.Children.Add(uCQuest);
             Canvas.SetLeft(uCQuest, 0);
@@ -46,6 +75,11 @@ namespace QuestBoardSBV
         private void canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddQuest();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            XmlTestUtils.SaveQuests(quests);
         }
     }
 
@@ -90,6 +124,32 @@ namespace QuestBoardSBV
         private void OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ReleaseMouseCapture();
+        }
+    }
+
+    public static class XmlTestUtils
+    {
+        public static List<BasicQuest> LoadQuests()
+        {
+            List<BasicQuest> quests = new List<BasicQuest> { };
+            XmlSerializer serializer = new XmlSerializer(typeof(List<BasicQuest>));
+            if (File.Exists("quests.xml"))
+            {
+                using (FileStream fs = new FileStream("quests.xml", FileMode.Open))
+                {
+                    quests = (List<BasicQuest>)serializer.Deserialize(fs);
+                }
+            }
+            return quests;
+        }
+
+        public static void SaveQuests(List<BasicQuest> quests)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<BasicQuest>));
+            using (FileStream fs = new FileStream("quests.xml", FileMode.Create))
+            {
+                serializer.Serialize(fs, quests);
+            }
         }
     }
     #endregion

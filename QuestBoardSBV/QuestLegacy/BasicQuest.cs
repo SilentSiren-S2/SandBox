@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuestBoardSBV.QuestLegacy
 {
-    internal class BasicQuest
+    public class BasicQuest
     {
         //public int Id { get; set; }
         public string Name { get; set; }
