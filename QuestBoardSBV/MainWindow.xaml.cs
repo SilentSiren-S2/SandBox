@@ -21,50 +21,15 @@ namespace QuestBoardSBV
     public partial class MainWindow : Window
     {
         private List<BasicQuest> quests = new List<BasicQuest> { };
+        UCDesk mainDesk;
         public MainWindow()
         {
             InitializeComponent();
             quests = XmlTestUtils.LoadQuests();
-            OpenQuests();
-        }
-
-        private void OpenQuests()
-        {
-            int i = 0;
-            foreach (BasicQuest quest in quests)
-            {
-                UCQuest uCQuest = new UCQuest();
-                uCQuest.SetQuest(quest);
-                uCQuest.QuestUpdatedInUCQuest += UpdateQuestInMainWindow;
-                canvas.Children.Add(uCQuest);
-                Canvas.SetLeft(uCQuest, i);
-                Canvas.SetTop(uCQuest, 0);
-                uCQuest.startPoint = new Point(i, 0);
-                i += 60;
-            }
-        }
-
-        private void UpdateQuestInMainWindow(BasicQuest updatedQuest)
-        {
-            // Оновіть відповідний елемент у списку quests
-            int index = quests.FindIndex(q => q == updatedQuest);
-            if (index != -1)
-            {
-                quests[index] = updatedQuest;
-            }
-        }
-
-        private void AddQuest()
-        {
-            BasicQuest newQuest = new BasicQuest();
-            quests.Add(newQuest);
-            UCQuest uCQuest = new UCQuest();
-            uCQuest.SetQuest(newQuest);
-            uCQuest.QuestUpdatedInUCQuest += UpdateQuestInMainWindow;
-
-            canvas.Children.Add(uCQuest);
-            Canvas.SetLeft(uCQuest, 0);
-            Canvas.SetTop(uCQuest, 0);
+            lvLeft.ItemsSource = quests;
+            mainDesk = new UCDesk(quests);
+            pMain.Children.Add(mainDesk);
+            //OpenQuests();
         }
 
         private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -74,11 +39,12 @@ namespace QuestBoardSBV
 
         private void canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            AddQuest();
+            //AddQuest();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            quests = mainDesk.quests;
             XmlTestUtils.SaveQuests(quests);
         }
     }

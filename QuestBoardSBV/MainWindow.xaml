@@ -5,11 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuestBoardSBV"
         mc:Ignorable="d"
-        Title="Main Desk" Height="450" Width="800" Closing="Window_Closing" Icon="/TempesT.bmp">
+        Title="Main Desk" Height="450" Width="800" Closing="Window_Closing" Icon="/TempesT.bmp" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="#FF1A1A1A">
     <DockPanel x:Name="pMain" LastChildFill="True">
         <StackPanel x:Name="spTop" DockPanel.Dock="Top" Orientation="Horizontal" Height="30" Background="Black">
-            
+            <Button x:Name="bFilter" Width="80" Margin="20,5,5,5" Background="Gold">
+                Фільтр...
+            </Button>
         </StackPanel>
+        <DockPanel x:Name="pLeft" DockPanel.Dock="Left" Width="180">
+            <ListView x:Name="lvLeft" Width="160" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FF1A1A1A" Foreground="#FFCBC600" BorderBrush="#01828790">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </DockPanel>
         <!--<Frame x:Name="fMain" Background="Black">-->
         <Canvas x:Name="canvas" Background="#FF1A1A1A" MouseLeftButtonDown="canvas_MouseLeftButtonDown" MouseRightButtonDown="canvas_MouseRightButtonDown">
             

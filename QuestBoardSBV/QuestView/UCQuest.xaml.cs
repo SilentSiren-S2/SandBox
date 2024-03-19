@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -22,7 +23,7 @@ namespace QuestBoardSBV.QuestView
     /// </summary>
     public partial class UCQuest : UserControl
     {
-        public Canvas canvas;
+        public Canvas bindedCanvas;
         public Point startPoint;
         private BasicQuest _quest;
         public BasicQuest Quest
@@ -64,11 +65,33 @@ namespace QuestBoardSBV.QuestView
             MouseLeftButtonUp += OnMouseLeftButtonUp;
         }
 
+        public UCQuest(Canvas canvas) : this()
+        {
+            bindedCanvas = canvas;
+        }
+
         internal void SetQuest(BasicQuest quest)
         {
             _quest = quest;
             tbName.Text = quest.Name;
             tbInfo.Text = quest.Description;
+            cmbQuestType.SelectedItem = quest.QType.ToString();
+
+            UpdateView();
+        }
+
+        private void UpdateView()
+        {
+            if (!_quest.IsDone)
+            {
+                tbName.IsReadOnly = false;
+                tbInfo.IsReadOnly = false;
+            }
+            else
+            {
+                tbName.IsReadOnly = true;
+                tbInfo.IsReadOnly = true;
+            }
         }
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -80,7 +103,8 @@ namespace QuestBoardSBV.QuestView
         {
             if (IsMouseCaptured)
             {
-                Point currentPoint = e.GetPosition(canvas);
+                Point currentPoint = e.GetPosition(bindedCanvas);
+                //e.GetPosition()
                 double dX = currentPoint.X - startPoint.X;
                 double dY = currentPoint.Y - startPoint.Y;
 
@@ -104,6 +128,25 @@ namespace QuestBoardSBV.QuestView
         private void tbInfo_TextChanged(object sender, TextChangedEventArgs e)
         {
             Description = tbInfo.Text;
+        }
+
+        private void bIsDone_Click(object sender, RoutedEventArgs e)
+        {
+            if(_quest.IsDone)
+                _quest.IsDone = false;
+            else 
+                _quest.IsDone = true;
+            UpdateView();
+        }
+
+        private void cmbQuestType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbQuestType.SelectedItem != null)
+            {
+                string selectedType = ((ComboBoxItem)cmbQuestType.SelectedItem).Content.ToString();
+                _quest.QType = (QuestType)Enum.Parse(typeof(QuestType), selectedType);
+                QuestUpdatedInUCQuest?.Invoke(_quest);
+            }
         }
     }
 }
