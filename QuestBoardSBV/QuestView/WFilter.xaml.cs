@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuestBoardSBV.QuestLegacy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,30 @@ namespace QuestBoardSBV.QuestView
     /// </summary>
     public partial class WFilter : Window
     {
+        private UCDesk filteredDesk;
+
         public WFilter()
         {
             InitializeComponent();
+        }
+
+        internal void Init(UCDesk desk)
+        {
+            filteredDesk = desk;
+            ShowDialog();
+        }
+
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Отримати обрані значення фільтрів
+            QuestType selectedType = (QuestType)cbQuestType.SelectedIndex;
+            bool showCompleted = chkIsDone.IsChecked ?? false;
+
+            // Викликати метод фільтрації у UCDesk
+            filteredDesk.ApplyFilter(selectedType, showCompleted);
+
+            // Закрити вікно фільтру
+            Close();
         }
     }
 }

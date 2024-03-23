@@ -3,12 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuestBoardSBV"
+        xmlns:local="clr-namespace:QuestBoardSBV.QuestView"
         mc:Ignorable="d"
         Title="Main Desk" Height="450" Width="800" Closing="Window_Closing" Icon="/TempesT.bmp" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="#FF1A1A1A">
     <DockPanel x:Name="pMain" LastChildFill="True">
         <StackPanel x:Name="spTop" DockPanel.Dock="Top" Orientation="Horizontal" Height="30" Background="Black">
-            <Button x:Name="bFilter" Width="80" Margin="20,5,5,5" Background="Gold">
+            <Button x:Name="bCreateNewQuest" Width="80" Margin="20,5,5,5" Background="Gold" Click="bCreateNewQuest_Click">
+                Створити...
+            </Button>
+            <Button x:Name="bFilter" Width="80" Margin="20,5,5,5" Background="Gold" Click="bFilter_Click">
                 Фільтр...
             </Button>
         </StackPanel>
@@ -20,12 +23,12 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-
         </DockPanel>
-        <!--<Frame x:Name="fMain" Background="Black">-->
-        <Canvas x:Name="canvas" Background="#FF1A1A1A" MouseLeftButtonDown="canvas_MouseLeftButtonDown" MouseRightButtonDown="canvas_MouseRightButtonDown">
-            
-        </Canvas>
-        <!--</Frame>-->
+
+        <TabControl DockPanel.Dock="Right" x:Name="tabControl" Background="Transparent" BorderThickness="0">
+            <TabItem Header="Tab 1">
+                <local:UCDesk x:Name="mainDesk" Background="#FF1A1A1A"/>
+            </TabItem>
+        </TabControl>
     </DockPanel>
 </Window>

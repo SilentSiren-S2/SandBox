@@ -21,15 +21,26 @@ namespace QuestBoardSBV
     public partial class MainWindow : Window
     {
         private List<BasicQuest> quests = new List<BasicQuest> { };
-        UCDesk mainDesk;
+        //UCDesk mainDesk;
         public MainWindow()
         {
             InitializeComponent();
-            quests = XmlTestUtils.LoadQuests();
+
+            AddNewTabWithDesk();
+            quests = XmlUtils.LoadData<BasicQuest>("quests.xml", XmlUtils.StorageLocation.ProjectBin);
             lvLeft.ItemsSource = quests;
-            mainDesk = new UCDesk(quests);
-            pMain.Children.Add(mainDesk);
-            //OpenQuests();
+            
+            mainDesk.InitQuests(quests);
+        }
+
+        private void AddNewTabWithDesk()
+        {
+            TabItem newTab = new TabItem();
+            newTab.Header = "Новий таб";
+            UCDesk deskContent = new UCDesk(quests);
+            newTab.Content = deskContent;
+
+            tabControl.Items.Add(newTab);
         }
 
         private void canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -45,7 +56,18 @@ namespace QuestBoardSBV
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             quests = mainDesk.quests;
-            XmlTestUtils.SaveQuests(quests);
+            XmlUtils.SaveData(quests, "quests.xml", XmlUtils.StorageLocation.ProjectBin);
+        }
+
+        private void bFilter_Click(object sender, RoutedEventArgs e)
+        {
+            WFilter filter = new WFilter();
+            filter.Init(mainDesk);
+        }
+
+        private void bCreateNewQuest_Click(object sender, RoutedEventArgs e)
+        {
+            mainDesk.AddQuest();
         }
     }
 
