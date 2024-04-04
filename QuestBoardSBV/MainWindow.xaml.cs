@@ -56,7 +56,7 @@ namespace QuestBoardSBV
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             quests = mainDesk.quests;
-            XmlUtils.SaveData(quests, "quests.xml", XmlUtils.StorageLocation.ProjectBin);
+            XmlUtils.SaveDataToBin(quests, "quests.xml");
         }
 
         private void bFilter_Click(object sender, RoutedEventArgs e)

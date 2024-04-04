@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuestBoardSBV.QuestLegacy;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
@@ -31,16 +32,31 @@ namespace QuestBoardSBV
             return data;
         }
 
-        public static void SaveData<T>(List<T> data, string fileName, StorageLocation location)
+        public static void SaveData<T>(List<T> data, string filePath) 
         {
-            string filePath = GetFilePath(fileName, location);
             XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
             Directory.CreateDirectory(Path.GetDirectoryName(filePath)); // Create directory if not exists
-            
+
             using (FileStream fs = new FileStream(filePath, FileMode.Create))
             {
                 serializer.Serialize(fs, data);
             }
+        }
+
+        public static void SaveData<T>(List<T> data, string fileName, StorageLocation location)
+        {
+            string filePath = GetFilePath(fileName, location);
+            SaveData(data, filePath);
+        }
+
+        public static void SaveDataToBin<T>(List<T> data, string fileName)
+        {
+            SaveData(data, fileName, StorageLocation.ProjectBin);
+        }
+
+        public static void SaveDataToAppData<T>(List<T> data, string fileName)
+        {
+            SaveData(data, fileName, StorageLocation.AppData);
         }
 
         private static string GetFilePath(string fileName, StorageLocation location)
