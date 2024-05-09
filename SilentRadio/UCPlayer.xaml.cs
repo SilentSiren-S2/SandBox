@@ -35,9 +35,13 @@ namespace SilentRadio
 
         public void Init(Song song)
         {
-            songTitle.Text = $"Now Playing: {song.Title}";
+            song = _player.LoadSong(song.Path);
+            songTitle.Text = song.Title;
+            artistName.Text = song.Artist;
+            if (song.AlbumPicture != null)
+                albumImage.Source = song.AlbumPicture;
             _duration = _player.GetAudioDuration(song.Path);
-            _player.PlaySong(song.Path);
+            _player.PlaySong();
             _playing = true;
 
             _timer = new DispatcherTimer();
@@ -45,7 +49,7 @@ namespace SilentRadio
             _timer.Tick += Timer_Tick;
             _timer.Start();
         }
-
+        
         private void Timer_Tick(object sender, EventArgs e)
         {
             try

@@ -4,17 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SilentRadio"
-             mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" >
     <DockPanel Background="#1E1E1E">
-        <!-- Song Title -->
-        <TextBlock x:Name="songTitle" Text="Now Playing: Unknown" Foreground="White" DockPanel.Dock="Top" Margin="5"/>
+        <DockPanel DockPanel.Dock="Top" Background="#1E1E1E" >
+
+
+            <!-- Album Image -->
+            <Image x:Name="albumImage" DockPanel.Dock="Left" Width="70" Height="70" Margin="5"/>
+            <!-- Song Title -->
+            <TextBlock x:Name="songTitle" Text="Now Playing: Unknown" Foreground="White" DockPanel.Dock="Top" Margin="5"/>
+
+            <!-- Artist -->
+            <TextBlock x:Name="artistName" Text="Artist: Unknown" Foreground="White" DockPanel.Dock="Top" Margin="5"/>
+        </DockPanel>
 
         <!-- Progress Bar -->
         <ProgressBar x:Name="progressBar" DockPanel.Dock="Top" Height="20" Margin="5"/>
 
+
         <!-- Control Buttons -->
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
             <Button Content="  &lt;  " Margin="5"/>
             <Button x:Name="playPauseButton" Content=" Play " Margin="5" Click="playPauseButton_Click"/>
             <Button Content="  &gt;  " Margin="5"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SilentRadio"
         mc:Ignorable="d"
-        Title="SilentRadio" Height="450" Width="800">
+        Title="SilentRadio" Height="800" Width="600">
     <DockPanel Background="#1E1E1E" LastChildFill="True">
 
         <!-- Control Buttons -->
@@ -15,7 +15,7 @@
         <!--    <Button Content="Stop" Margin="5"/> -->
         <!--</StackPanel> -->
 
-        <local:UCPlayer x:Name="ucPlayer" DockPanel.Dock="Bottom" Margin="10" Height="100"/>
+        <local:UCPlayer x:Name="ucPlayer" DockPanel.Dock="Bottom" Margin="10" />
 
 
         <!-- Song List -->
