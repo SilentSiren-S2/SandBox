@@ -24,6 +24,8 @@ namespace SilentRadio
 
             LoadSongs();
 
+            ucPlayer.NextAction += Next;
+            ucPlayer.PreviousAction += Previous;
             songListBox.ItemsSource = _songs;
 
         }
@@ -56,16 +58,34 @@ namespace SilentRadio
 
         }
 
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        private void Previous()
         {
-
+            if (songListBox.SelectedItem != null)
+            {
+                if (songListBox.SelectedIndex != 0)
+                {
+                    songListBox.SelectedItem = songListBox.Items[songListBox.SelectedIndex - 1];
+                }
+                else if (songListBox.SelectedIndex == 0)
+                {
+                    songListBox.SelectedItem = songListBox.Items[songListBox.Items.Count - 1];
+                }
+            }
         }
-
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        private void Next()
         {
-
+            if (songListBox.SelectedItem != null)
+            {
+                if (songListBox.SelectedIndex < songListBox.Items.Count - 1)
+                {
+                    songListBox.SelectedItem = songListBox.Items[songListBox.SelectedIndex + 1];
+                }
+                else if (songListBox.SelectedIndex == songListBox.Items.Count - 1)
+                {
+                    songListBox.SelectedItem = songListBox.Items[0];
+                }
+            }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 

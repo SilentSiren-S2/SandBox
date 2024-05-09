@@ -23,10 +23,10 @@
 
 
         <!-- Control Buttons -->
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-            <Button Content="  &lt;  " Margin="5"/>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button x:Name="btnPrev" Content="  &lt;  " Margin="5" Click="btnPrev_Click"/>
             <Button x:Name="playPauseButton" Content=" Play " Margin="5" Click="playPauseButton_Click"/>
-            <Button Content="  &gt;  " Margin="5"/>
+            <Button x:Name="btnNext" Content="  &gt;  " Margin="5" Click="btnNext_Click"/>
         </StackPanel>
     </DockPanel>
 </UserControl>
