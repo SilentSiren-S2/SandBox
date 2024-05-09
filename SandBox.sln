@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeadInside4", "DeadInside4\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestBoardSBV", "QuestBoardSBV\QuestBoardSBV.csproj", "{CA0E2496-EF98-4008-837A-66782A1B988A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilentRadio", "SilentRadio\SilentRadio.csproj", "{6D958ADA-E30C-40B7-A8C5-7C8F0A3013C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CA0E2496-EF98-4008-837A-66782A1B988A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA0E2496-EF98-4008-837A-66782A1B988A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA0E2496-EF98-4008-837A-66782A1B988A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D958ADA-E30C-40B7-A8C5-7C8F0A3013C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D958ADA-E30C-40B7-A8C5-7C8F0A3013C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D958ADA-E30C-40B7-A8C5-7C8F0A3013C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D958ADA-E30C-40B7-A8C5-7C8F0A3013C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

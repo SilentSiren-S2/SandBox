@@ -1,0 +1,24 @@
+﻿<Window x:Class="SilentRadio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SilentRadio"
+        mc:Ignorable="d"
+        Title="SilentRadio" Height="450" Width="800">
+    <DockPanel Background="#1E1E1E" LastChildFill="True">
+
+        <!-- Control Buttons -->
+        <!--<StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10"> -->
+        <!--    <Button Content="Play" Margin="5"/> -->
+        <!--    <Button Content="Pause" Margin="5"/> -->
+        <!--    <Button Content="Stop" Margin="5"/> -->
+        <!--</StackPanel> -->
+
+        <local:UCPlayer x:Name="ucPlayer" DockPanel.Dock="Bottom" Margin="10" Height="100"/>
+
+
+        <!-- Song List -->
+        <ListBox Name="songListBox" Background="#2E2E2E" Foreground="White" Margin="10" SelectionChanged="SongListBox_SelectionChanged"/>
+    </DockPanel>
+</Window>
