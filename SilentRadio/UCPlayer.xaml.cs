@@ -42,6 +42,11 @@ namespace SilentRadio
             artistName.Text = song.Artist;
             if (song.AlbumPicture != null)
                 albumImage.Source = song.AlbumPicture;
+            else
+            {
+                albumImage.Source = null;
+            }
+
             _duration = _player.GetAudioDuration(song.Path);
             _player.PlaySong();
             _playing = true;
