@@ -17,7 +17,7 @@ namespace SilentRadio
         public string Artist { get; set; }
         public string Lyrics { get; set; }
 
-        public BitmapImage? AlbumPicture { get; set; }
+//        public BitmapImage? AlbumPicture { get; set; }
 
         public override string ToString()
         {
@@ -45,18 +45,25 @@ namespace SilentRadio
                 _song.Title = file.Tag.Title;
                 _song.Artist = file.Tag.FirstArtist;
                 _song.Lyrics = file.Tag.Lyrics;
-                if (file.Tag.Pictures.Length >= 1)
-                {
-                    var picture = file.Tag.Pictures[0];
-                    var bitmapImage = new BitmapImage();
-                    bitmapImage.BeginInit();
-                    bitmapImage.StreamSource = new MemoryStream(picture.Data.Data);
-                    bitmapImage.EndInit();
-                    _song.AlbumPicture = bitmapImage;
-                }
-                //_song.AlbumPicture = (Picture?)file.Tag.Pictures[0];
             }
             return _song;
+        }
+
+        public BitmapImage? LoadImage(string filePath) 
+        {
+            var file = TagLib.File.Create(filePath);
+            if (file.Tag.Pictures.Length >= 1)
+            {
+                var picture = file.Tag.Pictures[0];
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = new MemoryStream(picture.Data.Data);
+                bitmapImage.EndInit();
+                BitmapImage? AlbumPicture = bitmapImage;
+                return AlbumPicture;
+            }
+            else
+                return null;
         }
 
         public void PlaySong()

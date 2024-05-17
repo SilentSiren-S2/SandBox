@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace SilentRadio
+namespace SilentRadio.SoundGUI
 {
     /// <summary>
     /// Interaction logic for UCPlayer.xaml
@@ -40,13 +40,8 @@ namespace SilentRadio
             song = _player.LoadSong(song.Path);
             songTitle.Text = song.Title;
             artistName.Text = song.Artist;
-            if (song.AlbumPicture != null)
-                albumImage.Source = song.AlbumPicture;
-            else
-            {
-                albumImage.Source = null;
-            }
-
+            albumImage.Source = _player.LoadImage(song.Path);
+            
             _duration = _player.GetAudioDuration(song.Path);
             _player.PlaySong();
             _playing = true;

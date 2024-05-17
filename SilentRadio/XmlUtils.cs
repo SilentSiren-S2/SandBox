@@ -16,8 +16,8 @@ namespace SilentRadio
             ProjectBin
         }
 
-        private static readonly string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Tempest", "Quests");
-        private static readonly string projectBinFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tempest", "Quests");
+        private static readonly string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Tempest", "Music");
+        private static readonly string projectBinFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tempest", "Music");
 
         public static List<T> LoadData<T>(string fileName, StorageLocation location)
         {
