@@ -27,7 +27,7 @@ namespace SilentRadio
 
             ucPlayer.NextAction += Next;
             ucPlayer.PreviousAction += Previous;
-
+            ucPlaylist.PlaySong += ucPlayer.Init;
         }
         private void LoadSongs()
         {
@@ -48,6 +48,10 @@ namespace SilentRadio
             List<Playlist> tmp = new List<Playlist>();
             tmp.Add(defaultPL);
             XmlUtils.SaveData(tmp, "defaultPL", XmlUtils.StorageLocation.ProjectBin);
+
+
+
+            ucPlaylist.Init(defaultPL);
         }
 
         private void SongListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

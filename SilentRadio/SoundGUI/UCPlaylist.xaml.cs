@@ -23,6 +23,7 @@ namespace SilentRadio.SoundGUI
     public partial class UCPlaylist : UserControl
     {
         public Playlist _playlist;
+        public event Action<Song> PlaySong;
 
         public UCPlaylist()
         {
@@ -34,19 +35,27 @@ namespace SilentRadio.SoundGUI
             _playlist = pl;
         }
 
+        public void Init(Playlist pl)
+        {
+            _playlist = pl;
+            LoadSongs();
+        }
+
         private void LoadSongs()
         {
             
 
-            string folderPath = @"D:\music\";
-            string[] filePaths = Directory.EnumerateFiles(folderPath, "*.mp3", SearchOption.AllDirectories).ToArray();
+            //string folderPath = @"D:\music\";
+            //string[] filePaths = Directory.EnumerateFiles(folderPath, "*.mp3", SearchOption.AllDirectories).ToArray();
 
 
-            foreach (string filePath in filePaths)
-            {
-                string fileName = System.IO.Path.GetFileNameWithoutExtension(filePath);
-                _playlist.Songs.Add(new Song { Title = fileName, Path = filePath });
-            }
+            //foreach (string filePath in filePaths)
+            //{
+            //    string fileName = System.IO.Path.GetFileNameWithoutExtension(filePath);
+            //    _playlist.Songs.Add(new Song { Title = fileName, Path = filePath });
+            //}
+
+            songListBox.ItemsSource = _playlist.Songs;
         }
 
         private void SongListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,6 +63,7 @@ namespace SilentRadio.SoundGUI
             if (songListBox.SelectedItem != null)
             {
                 Song selectedSong = (Song)songListBox.SelectedItem;
+                PlaySong?.Invoke(selectedSong);
                 //ucPlayer.Init(selectedSong);
             }
         }

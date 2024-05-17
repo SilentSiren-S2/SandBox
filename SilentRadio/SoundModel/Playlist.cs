@@ -11,8 +11,9 @@ namespace SilentRadio.SoundModel
     {
         public string PlaylistName { get; set; }
         public string Description { get; set; }
-        public List<Song> Songs { get; set; } = new List<Song>();
-//        public BitmapImage? PlaylistImage { get; set; }
+        public List<Song> Songs { get; set; }
+        //public BitmapImage? PlaylistImage { get; set; }
+
         public Playlist(string name)
         {
             PlaylistName = name;
